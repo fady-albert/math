@@ -16,6 +16,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--white);
+    transition: all 1s ease;
+}
+
+body.dark{
+    background: var(--black);
 }
 
 /* mode button */
@@ -31,6 +37,13 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 1s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 1s linear;
 }
 
+body.dark .mode{
+    background: var(--white);
+    color: var(--black);
+}
