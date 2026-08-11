@@ -89,6 +89,7 @@ backBtn.addEventListener("click", () => {
     home.classList.remove("hidden");
 });
 
+// choose the level
 levelButtons.forEach(button => {
     button.addEventListener("click", () => {
         const level = Number(button.dataset.level);
@@ -102,6 +103,7 @@ levelButtons.forEach(button => {
     });
 });
 
+// if user has the ability to play the level it will be opened
 function updateLevels() {
     levelButtons.forEach(button => {
         const level = Number(button.dataset.level);
@@ -117,6 +119,7 @@ function updateLevels() {
     });
 }
 
+// strat the game
 function startGame() {
     clearInterval(timer);
 
@@ -145,6 +148,7 @@ function startGame() {
     timer = setInterval(updateTimer, 1000);
 }
 
+// set the timer to end the game
 function updateTimer() {
     time--;
 
@@ -160,6 +164,7 @@ function updateTimer() {
     }
 }
 
+// generate random questions
 function generateQuestion() {
     questionLocked = false;
 
@@ -185,6 +190,7 @@ function generateQuestion() {
     generateAnswers();
 }
 
+// get the operation
 function calculate(a, b, operation) {
     if (operation === "+") return a + b;
     if (operation === "-") return a - b;
@@ -198,6 +204,7 @@ function getSymbol(operation) {
     return operation;
 }
 
+// get answers
 function generateAnswers() {
     const options = [correctAnswer];
     const range = levelData[currentLevel].range;
