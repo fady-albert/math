@@ -1,49 +1,602 @@
-:root{
+:root {
     --black: #000000;
-    --white: #EEEEEE;
-    --green: #08CB00;
+    --dark: #080808;
+    --dark-2: #111111;
+    --dark-3: #181818;
+    --white: #eeeeee;
+    --gray: #777777;
+    --green: #08cb00;
+    --green-dark: #069900;
+    --red: #ff3b30;
+    --yellow: #ffc107;
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--white);
-    transition: all 1s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.5s;
 }
 
-body.dark{
+body.dark {
     background: var(--black);
 }
 
-/* mode button */
-.mode{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    background: var(--black);
-    color: var(--white);
+.material-symbols-rounded {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.mode {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--green);
+    border-radius: 12px;
     cursor: pointer;
-    border: none;
-    outline: none;
-    transition: all 1s linear;
+    z-index: 10;
+    transition: 0.2s;
 }
 
-body.dark .mode{
+.mode:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(8, 203, 0, 0.3);
+}
+
+body.dark .mode {
     background: var(--white);
     color: var(--black);
+}
+
+.main {
+    width: 90%;
+    max-width: 1000px;
+    height: 85vh;
+    background: var(--black);
+    border: 2px solid var(--green);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(8, 203, 0, 0.1);
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo h1 {
+    color: var(--white);
+    font-size: clamp(50px, 8vw, 90px);
+    letter-spacing: 4px;
+}
+
+.logo h1 span {
+    color: var(--green);
+}
+
+.logo p {
+    color: var(--gray);
+    margin-top: 8px;
+}
+
+.home-info {
+    display: flex;
+    gap: 15px;
+    margin: 40px 0 30px;
+}
+
+.info-box {
+    width: 140px;
+    padding: 18px;
+    text-align: center;
+    background: var(--dark-2);
+    border: 1px solid #252525;
+    border-radius: 15px;
+}
+
+.info-box span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: var(--gray);
+    font-size: 11px;
+}
+
+.info-box strong {
+    display: block;
+    margin-top: 7px;
+    color: var(--white);
+    font-size: 21px;
+}
+
+.info-box:first-child .material-symbols-rounded {
+    color: var(--yellow);
+}
+
+.info-box:last-child .material-symbols-rounded {
+    color: var(--red);
+}
+
+.main-btn {
+    min-width: 180px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green);
+    color: var(--black);
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.main-btn:hover {
+    background: var(--green-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(8, 203, 0, 0.3);
+}
+
+.best-score {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--gray);
+    font-size: 13px;
+}
+
+.best-score .material-symbols-rounded {
+    color: var(--yellow);
+}
+
+.best-score strong {
+    color: var(--green);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title .material-symbols-rounded {
+    color: var(--green);
+    font-size: 35px;
+}
+
+.title h2 {
+    color: var(--white);
+    font-size: 38px;
+}
+
+.description {
+    color: var(--gray);
+    margin: 10px 0 25px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.level-list {
+    width: min(700px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.level-btn {
+    width: 100%;
+    min-height: 70px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--dark-2);
+    border: 1px solid #252525;
+    border-radius: 14px;
+    color: var(--white);
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.level-btn:hover:not(.locked) {
+    border-color: var(--green);
+    transform: translateX(5px);
+}
+
+.level-btn.locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.level-number {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-3);
+    border-radius: 10px;
+    color: var(--green);
+    font-weight: bold;
+}
+
+.level-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.level-info strong {
+    font-size: 15px;
+}
+
+.level-info small {
+    color: var(--gray);
+    font-size: 11px;
+}
+
+.level-icon {
+    color: var(--green);
+}
+
+.level-btn.locked .level-icon {
+    color: var(--gray);
+}
+
+.back-btn {
+    margin-top: 15px;
+    padding: 9px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    color: var(--white);
+}
+
+.stats {
+    width: min(700px, 100%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.stat {
+    padding: 12px;
+    background: var(--dark-2);
+    border: 1px solid #252525;
+    border-radius: 13px;
+    text-align: center;
+}
+
+.stat span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--gray);
+    font-size: 10px;
+}
+
+.stat strong {
+    display: block;
+    margin-top: 5px;
+    color: var(--white);
+    font-size: 22px;
+}
+
+.stat:nth-child(1) .material-symbols-rounded {
+    color: var(--yellow);
+}
+
+.stat:nth-child(2) .material-symbols-rounded {
+    color: var(--green);
+}
+
+.stat:nth-child(3) .material-symbols-rounded {
+    color: var(--yellow);
+}
+
+.game-level {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--gray);
+    font-size: 12px;
+}
+
+.game-level .material-symbols-rounded {
+    color: var(--green);
+}
+
+.game-level strong {
+    color: var(--green);
+}
+
+.combo {
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--green);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.combo .material-symbols-rounded {
+    color: var(--yellow);
+    font-size: 24px;
+}
+
+.question-box {
+    width: min(700px, 100%);
+    padding: 30px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-2);
+    border: 1px solid #252525;
+    border-radius: 20px;
+}
+
+#question {
+    color: var(--white);
+    font-size: clamp(40px, 7vw, 68px);
+    text-align: center;
+}
+
+.answers {
+    width: min(700px, 100%);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.answer {
+    min-height: 75px;
+    background: var(--dark-2);
+    border: 2px solid #252525;
+    border-radius: 16px;
+    color: var(--white);
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer:hover {
+    border-color: var(--green);
+    transform: translateY(-3px);
+}
+
+.answer.correct {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--black);
+    animation: pop 0.3s;
+}
+
+.answer.wrong {
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--white);
+    animation: shake 0.3s;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+.game-bottom {
+    width: min(700px, 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lives {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.lives .material-symbols-rounded {
+    color: var(--red);
+    font-size: 23px;
+}
+
+.progress {
+    width: 180px;
+    height: 5px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progressBar {
+    width: 100%;
+    height: 100%;
+    background: var(--green);
+    transition: width 1s linear;
+}
+
+.game-over-icon {
+    color: var(--green);
+    font-size: 55px;
+}
+
+#gameOver h2 {
+    color: var(--white);
+    font-size: 55px;
+}
+
+.score-label {
+    margin-top: 15px;
+    color: var(--gray);
+    font-size: 12px;
+}
+
+.final-score {
+    margin: 5px 0 15px;
+    color: var(--green);
+    font-size: 65px;
+}
+
+.final-best {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--gray);
+}
+
+.final-best .material-symbols-rounded {
+    color: var(--yellow);
+}
+
+.final-best strong {
+    color: var(--white);
+}
+
+#gameOver .main-btn {
+    margin-top: 25px;
+}
+
+@media (max-width: 600px) {
+    .main {
+        width: 94%;
+        height: 88vh;
+    }
+
+    .screen {
+        padding: 20px 15px;
+    }
+
+    .logo h1 {
+        font-size: 48px;
+    }
+
+    .home-info {
+        margin: 25px 0;
+    }
+
+    .info-box {
+        width: 120px;
+    }
+
+    .title h2 {
+        font-size: 28px;
+    }
+
+    .level-btn {
+        min-height: 65px;
+        padding: 8px 12px;
+    }
+
+    .level-info small {
+        max-width: 190px;
+    }
+
+    .stats {
+        gap: 6px;
+    }
+
+    .stat {
+        padding: 9px 5px;
+    }
+
+    .stat strong {
+        font-size: 18px;
+    }
+
+    #question {
+        font-size: 40px;
+    }
+
+    .question-box {
+        padding: 25px 10px;
+    }
+
+    .answers {
+        gap: 8px;
+    }
+
+    .answer {
+        min-height: 65px;
+        font-size: 23px;
+    }
+
+    .progress {
+        width: 120px;
+    }
+
+    #gameOver h2 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .answers {
+        grid-template-columns: 1fr;
+    }
+
+    .answer {
+        min-height: 55px;
+    }
+
+    #question {
+        font-size: 34px;
+    }
 }

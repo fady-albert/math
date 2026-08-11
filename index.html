@@ -3,41 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathRush</title>
-    <!-- google icon -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <!-- css link -->
-    <link rel="stylesheet" href="./style.css">
+    <title>Math Rush</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,1,0" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
     <!-- mode button -->
-    <button class="mode" id="mode">
-        <span class="material-symbols-outlined">light_mode</span>
-    </button>
+    <button class="mode" id="mode"><span class="material-symbols-rounded" id="modeIcon">light_mode</span></button>
 
-    <!-- game -->
-    <div class="main">
+    <main class="main">
 
-        <div class="display">
-            <h1>mathrush</h1>
-            <p>challenge your self</p>
-            <div class="level">
-                <button id="easy">easy</button>
-                <button id="medium">medium</button>
-                <button id="hard">hard</button>
+        <!-- HOME -->
+        <section class="screen" id="home">
+            <div class="logo">
+                <h1>MATH <span>RUSH</span></h1>
+                <p>How fast can you solve?</p>
             </div>
-            <button id="play">start</button>
-        </div>
 
-        <div class="game">
-            <div class="quest" id="quest"></div>
-            <div class="solution" id="sol"></div>
-        </div>
-        
-    </div>
+            <div class="home-info">
+                <div class="info-box">
+                    <span><span class="material-symbols-rounded">timer</span> TIME</span>
+                    <strong>60s</strong>
+                </div>
 
-    <!-- js link -->
-    <script src="./script.js"></script>
+                <div class="info-box">
+                    <span><span class="material-symbols-rounded">favorite</span> LIVES</span>
+                    <strong>3</strong>
+                </div>
+            </div>
+
+            <button class="main-btn" id="playBtn">
+                <span class="material-symbols-rounded">play_arrow</span>
+                PLAY
+            </button>
+
+            <p class="best-score">
+                <span class="material-symbols-rounded">emoji_events</span>
+                BEST SCORE: <strong id="homeBest">0</strong>
+            </p>
+        </section>
+
+
+        <!-- LEVELS -->
+        <section class="screen hidden" id="levels">
+
+            <div class="title">
+                <span class="material-symbols-rounded">military_tech</span>
+                <h2>SELECT LEVEL</h2>
+            </div>
+
+            <p class="description">Reach 100 points to unlock the next level.</p>
+
+            <div class="level-list">
+
+                <button class="level-btn" data-level="1">
+                    <span class="level-number">01</span>
+                    <span class="level-info">
+                        <strong>EASY</strong>
+                        <small>Addition & Subtraction</small>
+                    </span>
+                    <span class="material-symbols-rounded level-icon">play_arrow</span>
+                </button>
+
+                <button class="level-btn" data-level="2">
+                    <span class="level-number">02</span>
+                    <span class="level-info">
+                        <strong>NORMAL</strong>
+                        <small>Addition, Subtraction & Multiplication</small>
+                    </span>
+                    <span class="material-symbols-rounded level-icon">lock</span>
+                </button>
+
+                <button class="level-btn" data-level="3">
+                    <span class="level-number">03</span>
+                    <span class="level-info">
+                        <strong>HARD</strong>
+                        <small>All Operations</small>
+                    </span>
+                    <span class="material-symbols-rounded level-icon">lock</span>
+                </button>
+
+                <button class="level-btn" data-level="4">
+                    <span class="level-number">04</span>
+                    <span class="level-info">
+                        <strong>EXPERT</strong>
+                        <small>Bigger Numbers</small>
+                    </span>
+                    <span class="material-symbols-rounded level-icon">lock</span>
+                </button>
+
+                <button class="level-btn" data-level="5">
+                    <span class="level-number">05</span>
+                    <span class="level-info">
+                        <strong>MASTER</strong>
+                        <small>Extreme Math</small>
+                    </span>
+                    <span class="material-symbols-rounded level-icon">lock</span>
+                </button>
+
+            </div>
+
+            <button class="back-btn" id="backBtn">
+                <span class="material-symbols-rounded">arrow_back</span>
+                BACK
+            </button>
+
+        </section>
+
+
+        <!-- GAME -->
+        <section class="screen hidden" id="game">
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span><span class="material-symbols-rounded">star</span> SCORE</span>
+                    <strong id="score">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span><span class="material-symbols-rounded">timer</span> TIME</span>
+                    <strong id="time">60</strong>
+                </div>
+
+                <div class="stat">
+                    <span><span class="material-symbols-rounded">emoji_events</span> BEST</span>
+                    <strong id="best">0</strong>
+                </div>
+
+            </div>
+
+            <div class="game-level">
+                <span class="material-symbols-rounded">military_tech</span>
+                LEVEL <strong id="currentLevel">1</strong>
+            </div>
+
+            <div class="combo" id="combo">
+                <span class="material-symbols-rounded">local_fire_department</span>
+                x0
+            </div>
+
+            <div class="question-box">
+                <h2 id="question">5 + 5 = ?</h2>
+            </div>
+
+            <div class="answers" id="answers"></div>
+
+            <div class="game-bottom">
+                <div class="lives" id="lives"></div>
+                <div class="progress"><div id="progressBar"></div></div>
+            </div>
+
+        </section>
+
+
+        <!-- GAME OVER -->
+        <section class="screen hidden" id="gameOver">
+
+            <span class="material-symbols-rounded game-over-icon">sports_score</span>
+
+            <h2>GAME OVER</h2>
+
+            <p class="score-label">YOUR SCORE</p>
+
+            <strong class="final-score" id="finalScore">0</strong>
+
+            <p class="final-best">
+                <span class="material-symbols-rounded">emoji_events</span>
+                BEST: <strong id="finalBest">0</strong>
+            </p>
+
+            <button class="main-btn" id="levelsBtn">
+                <span class="material-symbols-rounded">replay</span>
+                LEVELS
+            </button>
+
+            <button class="back-btn" id="menuBtn">
+                <span class="material-symbols-rounded">home</span>
+                MENU
+            </button>
+
+        </section>
+
+    </main>
+
+<script src="script.js"></script>
 </body>
 </html>
