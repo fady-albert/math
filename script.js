@@ -1,3 +1,4 @@
+// import HTML data
 const modeBtn = document.getElementById("mode");
 const modeIcon = document.getElementById("modeIcon");
 
@@ -29,6 +30,7 @@ const progressBar = document.getElementById("progressBar");
 
 const levelButtons = document.querySelectorAll(".level-btn");
 
+// js data
 let score = 0;
 let time = 60;
 let lives = 3;
@@ -47,6 +49,7 @@ if (unlockedLevel > 5) {
 
 homeBest.textContent = highScore;
 
+// levels data
 const levelData = {
     1: { time: 60, min: 1, max: 10, operations: ["+", "-"], range: 3 },
     2: { time: 55, min: 5, max: 20, operations: ["+", "-", "*"], range: 5 },
@@ -55,6 +58,7 @@ const levelData = {
     5: { time: 40, min: 50, max: 200, operations: ["+", "-", "*", "/"], range: 15 }
 };
 
+// mode
 const savedMode = localStorage.getItem("mode");
 
 if (savedMode === "dark") {
@@ -68,9 +72,12 @@ modeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark");
     const isDark = document.body.classList.contains("dark");
     localStorage.setItem("mode", isDark ? "dark" : "light");
-    modeIcon.textContent = isDark ? "dark_mode" : "light_mode";
+    setTimeout(() => {
+        modeIcon.textContent = isDark ? "dark_mode" : "light_mode";
+    }, 500);
 });
 
+// game
 playBtn.addEventListener("click", () => {
     home.classList.add("hidden");
     levels.classList.remove("hidden");

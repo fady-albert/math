@@ -11,6 +11,8 @@
     --yellow: #ffc107;
 }
 
+/* main */
+
 * {
     padding: 0;
     margin: 0;
@@ -32,10 +34,14 @@ body.dark {
     background: var(--black);
 }
 
+/* icons */
+
 .material-symbols-rounded {
     font-size: 22px;
     line-height: 1;
 }
+
+/* game */
 
 .mode {
     position: fixed;
@@ -52,7 +58,7 @@ body.dark {
     border-radius: 12px;
     cursor: pointer;
     z-index: 10;
-    transition: 0.2s;
+    transition: all 1s linear;
 }
 
 .mode:hover {
@@ -84,6 +90,7 @@ body.dark .mode {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap: 10px;
 }
 
 .hidden {
