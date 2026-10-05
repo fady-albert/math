@@ -23,6 +23,16 @@ const livesText = document.getElementById("lives");
 const progressBar = document.getElementById("progressBar");
 const levelButtons = document.querySelectorAll(".level-btn");
 
+// sound
+const horror = new Audio('./horror.mp3');
+
+horror.loop = true;
+horror.volume = 0.5;
+
+document.addEventListener("click", () => {
+    horror.play();
+}, { once: true });
+
 // js data
 let score = 0;
 let time = 60;
