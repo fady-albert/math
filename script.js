@@ -60,25 +60,6 @@ const levelData = {
     5: { time: 40, min: 50, max: 200, operations: ["+", "-", "*", "/"], range: 15 }
 };
 
-// mode
-const savedMode = localStorage.getItem("mode");
-
-if (savedMode === "dark") {
-    document.body.classList.add("dark");
-    modeIcon.textContent = "dark_mode";
-} else {
-    modeIcon.textContent = "light_mode";
-}
-
-modeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    const isDark = document.body.classList.contains("dark");
-    localStorage.setItem("mode", isDark ? "dark" : "light");
-    setTimeout(() => {
-        modeIcon.textContent = isDark ? "dark_mode" : "light_mode";
-    }, 500);
-});
-
 // game
 playBtn.addEventListener("click", () => {
     home.classList.add("hidden");
