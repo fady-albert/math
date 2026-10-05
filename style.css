@@ -1,14 +1,14 @@
 :root {
     --black: #000000;
-    --dark: #080808;
-    --dark-2: #111111;
-    --dark-3: #181818;
-    --white: #eeeeee;
-    --gray: #777777;
-    --green: #08cb00;
-    --green-dark: #069900;
-    --red: #ff3b30;
-    --yellow: #ffc107;
+    --dark: #050000;
+    --dark-2: #0d0000;
+    --dark-3: #180000;
+    --white: #f1e5e5;
+    --gray: #6f5555;
+    --green: #700000;
+    --green-dark: #350000;
+    --red: #b30000;
+    --yellow: #650000;
 }
 
 /* main */
