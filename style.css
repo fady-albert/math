@@ -59,7 +59,7 @@ body {
 
 .mode:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(8, 203, 0, 0.3);
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
 }
 
 body.dark .mode {
@@ -75,7 +75,7 @@ body.dark .mode {
     border: 2px solid var(--green);
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 0 40px rgba(8, 203, 0, 0.1);
+    box-shadow: 0 0 40px rgba(139, 0, 0, 0.1);
 }
 
 .screen {
@@ -171,7 +171,7 @@ body.dark .mode {
 .main-btn:hover {
     background: var(--green-dark);
     transform: translateY(-3px);
-    box-shadow: 0 0 25px rgba(8, 203, 0, 0.3);
+    box-shadow: 0 0 25px rgba(139, 0, 0, 0.3);
 }
 
 .best-score {
