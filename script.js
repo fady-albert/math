@@ -1,33 +1,26 @@
 // import HTML data
 const modeBtn = document.getElementById("mode");
 const modeIcon = document.getElementById("modeIcon");
-
 const home = document.getElementById("home");
 const levels = document.getElementById("levels");
 const game = document.getElementById("game");
 const gameOver = document.getElementById("gameOver");
-
 const playBtn = document.getElementById("playBtn");
 const backBtn = document.getElementById("backBtn");
 const levelsBtn = document.getElementById("levelsBtn");
 const menuBtn = document.getElementById("menuBtn");
-
 const question = document.getElementById("question");
 const answers = document.getElementById("answers");
-
 const scoreText = document.getElementById("score");
 const timeText = document.getElementById("time");
 const bestText = document.getElementById("best");
 const homeBest = document.getElementById("homeBest");
-
 const finalScore = document.getElementById("finalScore");
 const finalBest = document.getElementById("finalBest");
-
 const currentLevelText = document.getElementById("currentLevel");
 const comboText = document.getElementById("combo");
 const livesText = document.getElementById("lives");
 const progressBar = document.getElementById("progressBar");
-
 const levelButtons = document.querySelectorAll(".level-btn");
 
 // js data
@@ -39,7 +32,6 @@ let currentLevel = 1;
 let correctAnswer = 0;
 let timer = null;
 let questionLocked = false;
-
 let highScore = Number(localStorage.getItem("mathRushHighScore")) || 0;
 let unlockedLevel = Number(localStorage.getItem("mathRushUnlocked")) || 1;
 
